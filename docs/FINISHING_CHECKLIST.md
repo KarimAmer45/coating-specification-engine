@@ -7,9 +7,9 @@ Done:
 - Release check hardened: analysis age, late analysis entries, inspection readings taken after plating, coating system vs. plating process, non-releasable lot states, inherited-only plating, thickness plausibility, technical verdict, evidence in the report pair, LF-only JSON with a matching footer hash.
 - Analysis entry times before `entered_at` existed are assumed equal to the sampling time; real entry times only exist for analyses entered from now on.
 - Catalog history: versions keyed on raw cells with a parser version; observation dates enforced.
+- Docker / Flyway startup ran cleanly on 2026-10-12, and the first hosted CI run (built from the synthetic fixture) passed the same day.
 
 Still open:
-- Run the workflow once on hosted CI (it builds from the synthetic fixture). Docker / Flyway startup ran cleanly on 2026-10-12; hosted CI has not been executed.
 - Supplier PDF: the sterc.org mirror no longer resolves; on 2026-10-11 I checked Table 1 of the copy at nmfrc.org against the six transcribed values (> 120 / 720 h blue, > 200 / 1,008 h blue + sealer and black + sealer); they match. A local copy of the PDF is still not saved.
 - Review the single-value ISO 19598 interpretation against a licensed copy of the standard; keep the printed interpretation note until then.
 - Obtain historical norm evidence and a customer-approved sampling plan before treating any demo check as an operational release decision. The five-sample threshold, the 4-day analysis age and the 3 × plausibility factor are my assumptions.

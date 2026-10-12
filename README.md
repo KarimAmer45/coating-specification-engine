@@ -1,8 +1,20 @@
 # Coating Specification & Lot Release Engine
 
+[![CI](https://github.com/KarimAmer45/coating-specification-engine/actions/workflows/verify.yml/badge.svg)](https://github.com/KarimAmer45/coating-specification-engine/actions/workflows/verify.yml)
+
 I built this project to turn Partec's published coating tables into a versioned PostgreSQL catalog, match simulated orders to individual source rows, and evaluate lot measurements and bath exposure. It produces a one-page German inspection report with a signature field, source citations and a JSON evidence snapshot. The report is a portfolio assessment; it does not change a lot's release status.
 
-The build runs offline from a local page cache and reproduces the numbers below. `python scripts/record_tests.py` runs the test suite and writes the result to [smoke_checks.json](docs/results/smoke_checks.json); the current suite has **62 tests**. The Docker/Flyway path ran cleanly on 2026-10-12; the hosted CI workflow is written but I have not run it yet (see [the open items](docs/FINISHING_CHECKLIST.md)).
+Part of a four project **Plating Data Platform**: [traceability](https://github.com/KarimAmer45/manufacturing-traceability) · [lab ETL and SPC](https://github.com/KarimAmer45/process-quality-analytics) · [IoT historian](https://github.com/KarimAmer45/industrial-iot-historian) · [specification and release](https://github.com/KarimAmer45/coating-specification-engine).
+
+<img src="docs/reports/Pruefbericht_L260430-01721_preview.png" width="520" alt="Top of the generated German inspection report for lot L260430-01721">
+
+**At a glance**
+
+- **55 published norm pages** turned into a versioned catalog of 217 source rows, each tied to the page version and observation date it came from.
+- **5,687 simulated lots** linked to a norm row and checked for thickness, bath coverage and process window; the complaint lot gets a WARN for a bath analysis outside the window.
+- A one page German inspection report with a hashed JSON evidence snapshot ([PDF](docs/reports/Pruefbericht_L260430-01721.pdf)); **62 tests**.
+
+The build runs offline from a local page cache and reproduces the numbers below. `python scripts/record_tests.py` runs the test suite and writes the result to [smoke_checks.json](docs/results/smoke_checks.json); the current suite has **62 tests**. The Docker/Flyway path ran cleanly on 2026-10-12, and GitHub Actions applies the Flyway migrations, builds from a synthetic fixture and runs the tests on every push; the first hosted run passed on 2026-10-12. Open items are listed in [the checklist](docs/FINISHING_CHECKLIST.md).
 
 ## Built result
 
@@ -154,7 +166,7 @@ docker compose run --rm app python scripts/build.py --skip-migrate
 docker compose run --rm app pytest -q tests
 ```
 
-I ran these four commands on 2026-10-12 with Docker Desktop on Windows: Flyway 11.20.3 applied all 12 migrations to a fresh PostgreSQL 17.11 container (up to V015), the build verified the 55 cached pages and reproduced 217 catalog rows, the same flag counts and the same verdict counts (4,622 WARN/PASS, 46 WARN/WARN, 532 FAIL, 487 INCOMPLETE; complaint lot WARN/WARN), and all 61 tests in the suite at that time passed (the test for rebuilding after a changed page was added afterwards). Since that run the `app` service waits for the Flyway service and runs the build by default; I have not re-run Docker after that change. The report pair committed in `docs/reports/` comes from my native run; a Docker build writes its own pair with a different timestamp and hash. I have not run the GitHub Actions workflow.
+I ran these four commands on 2026-10-12 with Docker Desktop on Windows: Flyway 11.20.3 applied all 12 migrations to a fresh PostgreSQL 17.11 container (up to V015), the build verified the 55 cached pages and reproduced 217 catalog rows, the same flag counts and the same verdict counts (4,622 WARN/PASS, 46 WARN/WARN, 532 FAIL, 487 INCOMPLETE; complaint lot WARN/WARN), and all 61 tests in the suite at that time passed (the test for rebuilding after a changed page was added afterwards). Since that run the `app` service waits for the Flyway service and runs the build by default; I have not re-run Docker after that change. The report pair committed in `docs/reports/` comes from my native run; a Docker build writes its own pair with a different timestamp and hash. The GitHub Actions workflow runs on every push.
 
 Flyway runs in Docker/CI. The native migration runner has an independent checksum ledger and refuses a Flyway-managed database. Do not mix the two runners. The CI workflow never contacts the norm publisher: it builds from a small synthetic fixture (`tests/fixtures/norm_pages`) with `--norm-source`. The fixture rows are invented for the tests: only the standard designations are reused so that the simulated orders link, while descriptions, thickness ranges and capabilities are made up and marked as test rows. It assumes this project folder is the repository root.
 
@@ -167,4 +179,3 @@ Roles separate operator, laboratory, quality, ingest and read-only access. Tests
 - Requirement edits re-score earlier lots (see above); issued report pairs are the record.
 - Analysis entry times are real only for analyses entered after `entered_at` was added; earlier and simulated analyses are assumed to have been entered when sampled.
 - The supplier PDF has not been saved locally; the six values are a transcription, which I checked against Table 1 of the nmfrc.org copy on 2026-10-11.
-- Hosted CI has not been run.
