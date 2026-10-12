@@ -1,0 +1,11 @@
+check_name,required,observed,verdict
+Quellenstand,Webstand zum Auftragsdatum belegt,"Beobachtet 05.10.2026, Seite geändert 17.08.2026; rückwirkend angenommen für Auftrag vom 30.04.2026",WARN
+Quelldaten,Keine offenen Unklarheiten,Keine; Auslegung: Einzelwert als Mindestschichtdicke (ISO 19598) gelesen,PASS
+Beschichtungssystem / Bad,ZnNi: ZNNI_ALK,ZNNI_ALK,PASS
+Schichtdicke: Stichprobe,≥ 5 Teile nach Beschichtung (Demoannahme),5,PASS
+Schichtdicke: Minimum,≥ 8 µm,"9,56 µm",PASS
+Schichtdicke: Plausibilität,"≤ 24 µm (3 × Minimum, Demoannahme)","12,11 µm",PASS
+Badanalysen: Abdeckung,"Alle Beschichtungsschritte, Analyse höchstens 4 Tage alt, vorher erfasst",2 Schritte / 0 Lücken,PASS
+Bad im Prozessfenster,Keine Analyse außerhalb des Fensters,"Analyse 44: Ni 0,926 < 1,1 g/L",WARN
+Anlagenart,Trommel / Gestell zugelassen,Trommel,PASS
+Losstatus,Geprüfte Fertigware (freigegeben / ausgeliefert),ausgeliefert,PASS

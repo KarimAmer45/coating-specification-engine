@@ -1,0 +1,283 @@
+{
+  "generated_at": "2026-10-11T20:54:49.825825+00:00",
+  "lot": {
+    "lot_id": 1721,
+    "lot_no": "L260430-01721",
+    "qty_pcs": 1645,
+    "status": "shipped",
+    "status_de": "ausgeliefert",
+    "origin": "receipt",
+    "parent_lot_no": null,
+    "spec_code": "DIN EN ISO 19598 Fe//ZnNi8//Fn//T0",
+    "customer": "C004",
+    "part_no": "ISO4017-M10x50",
+    "order_no": "PO-001721",
+    "received_on": "2026-04-30",
+    "coating_type_id": 44,
+    "row_no": 18,
+    "type_code_raw": "Fe//ZnNi8//Fn//T0",
+    "type_code": "Fe//ZnNi8//Fn//T0",
+    "description_de": "Zink-Nickel-Legierung schwarz passiviert ohne Versiegelung",
+    "thickness_min_um": "8",
+    "thickness_max_um": null,
+    "coating_system": "ZnNi",
+    "passivation": "black",
+    "sealed": false,
+    "barrel_ok": true,
+    "rack_ok": true,
+    "quality_flags": [],
+    "raw_cells": {
+      "typ": "Fe//ZnNi8//Fn//T0",
+      "gestell": "Ja",
+      "trommel": "Ja",
+      "beschichtung": "Zink-Nickel-Legierung schwarz passiviert ohne Versiegelung",
+      "schichtdicke": "8"
+    },
+    "norm_code": "DIN EN ISO 19598",
+    "page_url": "https://www.partec.de/industrie-automobilnormen/din-en-iso-19598/",
+    "version_id": 10,
+    "valid_from": "2026-01-01",
+    "valid_to": null,
+    "observed_at": "2026-10-05 04:53:42.806452+00:00",
+    "page_modified": "2026-08-17 09:52:46+00:00",
+    "historical_assumption": true,
+    "raw_sha256": "10053c79ef0699d8cfc8aa03c2f16cdbb4dd9e97e3edf184c640f851d0bd44ea",
+    "cells_sha256": "610633866399fc40725e3d3c2b553e8dc37e1cba4f527db13ca7205897844803",
+    "parser_version": "1"
+  },
+  "checks": [
+    {
+      "check_name": "Quellenstand",
+      "required": "Webstand zum Auftragsdatum belegt",
+      "observed": "Beobachtet 05.10.2026, Seite geändert 17.08.2026; rückwirkend angenommen für Auftrag vom 30.04.2026",
+      "verdict": "WARN"
+    },
+    {
+      "check_name": "Quelldaten",
+      "required": "Keine offenen Unklarheiten",
+      "observed": "Keine; Auslegung: Einzelwert als Mindestschichtdicke (ISO 19598) gelesen",
+      "verdict": "PASS"
+    },
+    {
+      "check_name": "Beschichtungssystem / Bad",
+      "required": "ZnNi: ZNNI_ALK",
+      "observed": "ZNNI_ALK",
+      "verdict": "PASS"
+    },
+    {
+      "check_name": "Schichtdicke: Stichprobe",
+      "required": "≥ 5 Teile nach Beschichtung (Demoannahme)",
+      "observed": "5",
+      "verdict": "PASS"
+    },
+    {
+      "check_name": "Schichtdicke: Minimum",
+      "required": "≥ 8 µm",
+      "observed": "9,56 µm",
+      "verdict": "PASS"
+    },
+    {
+      "check_name": "Schichtdicke: Plausibilität",
+      "required": "≤ 24 µm (3 × Minimum, Demoannahme)",
+      "observed": "12,11 µm",
+      "verdict": "PASS"
+    },
+    {
+      "check_name": "Badanalysen: Abdeckung",
+      "required": "Alle Beschichtungsschritte, Analyse höchstens 4 Tage alt, vorher erfasst",
+      "observed": "2 Schritte / 0 Lücken",
+      "verdict": "PASS"
+    },
+    {
+      "check_name": "Bad im Prozessfenster",
+      "required": "Keine Analyse außerhalb des Fensters",
+      "observed": "Analyse 44: Ni 0,926 < 1,1 g/L",
+      "verdict": "WARN"
+    },
+    {
+      "check_name": "Anlagenart",
+      "required": "Trommel / Gestell zugelassen",
+      "observed": "Trommel",
+      "verdict": "PASS"
+    },
+    {
+      "check_name": "Losstatus",
+      "required": "Geprüfte Fertigware (freigegeben / ausgeliefert)",
+      "observed": "ausgeliefert",
+      "verdict": "PASS"
+    }
+  ],
+  "verdict": "WARN",
+  "technical_verdict": "WARN",
+  "release_policy": {
+    "min_distinct_thickness_samples": 5,
+    "max_analysis_age": "4 days",
+    "max_thickness_factor": "3",
+    "source": "config/release_policy.yaml"
+  },
+  "catalog": {
+    "norm_code": "DIN EN ISO 19598",
+    "page_url": "https://www.partec.de/industrie-automobilnormen/din-en-iso-19598/",
+    "version_id": 10,
+    "valid_from": "2026-01-01",
+    "valid_to": null,
+    "observed_at": "2026-10-05 04:53:42.806452+00:00",
+    "page_modified": "2026-08-17 09:52:46+00:00",
+    "historical_assumption": true,
+    "raw_sha256": "10053c79ef0699d8cfc8aa03c2f16cdbb4dd9e97e3edf184c640f851d0bd44ea",
+    "cells_sha256": "610633866399fc40725e3d3c2b553e8dc37e1cba4f527db13ca7205897844803",
+    "parser_version": "1",
+    "row_no": 18,
+    "type_code_raw": "Fe//ZnNi8//Fn//T0",
+    "type_code": "Fe//ZnNi8//Fn//T0",
+    "quality_flags": [],
+    "raw_cells": {
+      "typ": "Fe//ZnNi8//Fn//T0",
+      "gestell": "Ja",
+      "trommel": "Ja",
+      "beschichtung": "Zink-Nickel-Legierung schwarz passiviert ohne Versiegelung",
+      "schichtdicke": "8"
+    },
+    "assumed_for_this_order": true
+  },
+  "bath_evidence": {
+    "coverage": [
+      {
+        "step_id": 3978,
+        "relation": "self",
+        "lot_no": "L260430-01721",
+        "carrier_no": "B19",
+        "tank_code": "L1-T05",
+        "process_code": "ZNNI_ALK",
+        "in_station": "[2026-04-30 08:56:00+00:00, 2026-04-30 10:40:45.714286+00:00)",
+        "analysis_id": 44,
+        "sampled_at": "2026-04-30 04:00:00+00:00",
+        "entered_at": "2026-04-30 04:00:00+00:00",
+        "valid_during": "[2026-04-30 04:00:00+00:00, 2026-05-01 04:00:00+00:00)",
+        "counted_during": "[2026-04-30 08:56:00+00:00, 2026-04-30 10:40:45.714286+00:00)",
+        "parameters_complete": true
+      },
+      {
+        "step_id": 3979,
+        "relation": "self",
+        "lot_no": "L260430-01721",
+        "carrier_no": "B20",
+        "tank_code": "L1-T05",
+        "process_code": "ZNNI_ALK",
+        "in_station": "[2026-04-30 09:00:00+00:00, 2026-04-30 10:44:45.714286+00:00)",
+        "analysis_id": 44,
+        "sampled_at": "2026-04-30 04:00:00+00:00",
+        "entered_at": "2026-04-30 04:00:00+00:00",
+        "valid_during": "[2026-04-30 04:00:00+00:00, 2026-05-01 04:00:00+00:00)",
+        "counted_during": "[2026-04-30 09:00:00+00:00, 2026-04-30 10:44:45.714286+00:00)",
+        "parameters_complete": true
+      }
+    ],
+    "analyses": [
+      {
+        "analysis_id": 44,
+        "results": [
+          {
+            "analysis_id": 44,
+            "sampled_at": "2026-04-30 04:00:00+00:00",
+            "valid_during": "[2026-04-30 04:00:00+00:00, 2026-05-01 04:00:00+00:00)",
+            "parameter_code": "COD",
+            "value": "122.4840",
+            "unit": "g/L",
+            "lsl": null,
+            "target": null,
+            "usl": null,
+            "status": "NO_LIMIT"
+          },
+          {
+            "analysis_id": 44,
+            "sampled_at": "2026-04-30 04:00:00+00:00",
+            "valid_during": "[2026-04-30 04:00:00+00:00, 2026-05-01 04:00:00+00:00)",
+            "parameter_code": "NA2CO3",
+            "value": "74.7380",
+            "unit": "g/L",
+            "lsl": null,
+            "target": null,
+            "usl": "80.0000",
+            "status": "OK"
+          },
+          {
+            "analysis_id": 44,
+            "sampled_at": "2026-04-30 04:00:00+00:00",
+            "valid_during": "[2026-04-30 04:00:00+00:00, 2026-05-01 04:00:00+00:00)",
+            "parameter_code": "NAOH",
+            "value": "118.1280",
+            "unit": "g/L",
+            "lsl": "110.0000",
+            "target": "120.0000",
+            "usl": "140.0000",
+            "status": "OK"
+          },
+          {
+            "analysis_id": 44,
+            "sampled_at": "2026-04-30 04:00:00+00:00",
+            "valid_during": "[2026-04-30 04:00:00+00:00, 2026-05-01 04:00:00+00:00)",
+            "parameter_code": "NI",
+            "value": "0.9260",
+            "unit": "g/L",
+            "lsl": "1.1000",
+            "target": "1.4000",
+            "usl": "2.0000",
+            "status": "LOW"
+          },
+          {
+            "analysis_id": 44,
+            "sampled_at": "2026-04-30 04:00:00+00:00",
+            "valid_during": "[2026-04-30 04:00:00+00:00, 2026-05-01 04:00:00+00:00)",
+            "parameter_code": "ZN",
+            "value": "10.1260",
+            "unit": "g/L",
+            "lsl": "7.0000",
+            "target": "10.0000",
+            "usl": "12.0000",
+            "status": "OK"
+          }
+        ]
+      }
+    ]
+  },
+  "measurements": [
+    {
+      "sample": 1,
+      "characteristic": "thickness_um",
+      "value": "10.6800",
+      "method": "XRF ISO 3497",
+      "measured_at": "2026-04-30 11:14:45.714286+00:00"
+    },
+    {
+      "sample": 2,
+      "characteristic": "thickness_um",
+      "value": "10.4000",
+      "method": "XRF ISO 3497",
+      "measured_at": "2026-04-30 11:14:45.714286+00:00"
+    },
+    {
+      "sample": 3,
+      "characteristic": "thickness_um",
+      "value": "12.1100",
+      "method": "XRF ISO 3497",
+      "measured_at": "2026-04-30 11:10:45.714286+00:00"
+    },
+    {
+      "sample": 4,
+      "characteristic": "thickness_um",
+      "value": "11.1100",
+      "method": "XRF ISO 3497",
+      "measured_at": "2026-04-30 11:10:45.714286+00:00"
+    },
+    {
+      "sample": 5,
+      "characteristic": "thickness_um",
+      "value": "9.5600",
+      "method": "XRF ISO 3497",
+      "measured_at": "2026-04-30 11:14:45.714286+00:00"
+    }
+  ],
+  "references": [],
+  "references_attached": 0
+}

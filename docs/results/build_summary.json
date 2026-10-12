@@ -1,0 +1,63 @@
+{
+  "catalog": [
+    {
+      "norms": 55,
+      "versions": 55,
+      "coating_rows": 217
+    }
+  ],
+  "link_status": [
+    {
+      "reason": "linked",
+      "lots": 5687
+    }
+  ],
+  "production": [
+    {
+      "lots": 5687,
+      "measurements": 27733
+    }
+  ],
+  "references": [
+    {
+      "kind": "reference",
+      "rows": 34,
+      "catalog_rows": 17
+    }
+  ],
+  "release_policy": [
+    {
+      "min_distinct_thickness_samples": 5,
+      "max_analysis_age": "4 days",
+      "max_thickness_factor": "3"
+    }
+  ],
+  "complaint_lot": {
+    "lot_id": 1721,
+    "lot_no": "L260430-01721",
+    "verdict": "WARN",
+    "technical_verdict": "WARN"
+  },
+  "verdicts": [
+    {
+      "verdict": "FAIL",
+      "technical_verdict": "FAIL",
+      "lots": 532
+    },
+    {
+      "verdict": "INCOMPLETE",
+      "technical_verdict": "INCOMPLETE",
+      "lots": 487
+    },
+    {
+      "verdict": "WARN",
+      "technical_verdict": "PASS",
+      "lots": 4622
+    },
+    {
+      "verdict": "WARN",
+      "technical_verdict": "WARN",
+      "lots": 46
+    }
+  ]
+}

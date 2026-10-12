@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: spec_admin
+      POSTGRES_PASSWORD: ${SPEC_DB_PASSWORD:?Set SPEC_DB_PASSWORD}
+      POSTGRES_DB: coating_spec
+    ports: ["127.0.0.1:55437:5432"]
+    volumes: ["spec_db:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U spec_admin -d coating_spec"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  migrate:
+    image: flyway/flyway:11
+    depends_on:
+      db: {condition: service_healthy}
+    environment:
+      FLYWAY_URL: jdbc:postgresql://db:5432/coating_spec
+      FLYWAY_USER: spec_admin
+      FLYWAY_PASSWORD: ${SPEC_DB_PASSWORD}
+    volumes: ["./db/migrations:/flyway/sql:ro"]
+    command: migrate
+  app:
+    build: .
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+    # Flyway owns this database's migrations, so the build must not start the local runner.
+    command: ["python", "scripts/build.py", "--skip-migrate"]
+    environment:
+      PGHOST: db
+      PGPORT: 5432
+      PGDATABASE: coating_spec
+      PGUSER: spec_admin
+      PGPASSWORD: ${SPEC_DB_PASSWORD}
+      NORM_FETCH_USER_AGENT:
+    volumes: ["./data:/app/data", "./docs:/app/docs"]
+volumes:
+  spec_db:

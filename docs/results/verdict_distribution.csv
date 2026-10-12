@@ -1,0 +1,6 @@
+origin,status,verdict,technical_verdict,lots
+receipt,blocked,FAIL,FAIL,45
+receipt,reworked,FAIL,FAIL,487
+receipt,shipped,WARN,PASS,4622
+receipt,shipped,WARN,WARN,46
+rework,received,INCOMPLETE,INCOMPLETE,487

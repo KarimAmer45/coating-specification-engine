@@ -1,0 +1,21 @@
+# Explicit portfolio assumptions, not a customer-approved sampling plan.
+# scripts/load_policy.py copies the release values into spec.release_policy (audited) during the build.
+minimum_distinct_thickness_samples: 5
+max_analysis_age_days: 4
+max_analysis_age_reason: 'The simulated lab analyses the plating bath once per working day at 06:00. An analysis counts as bath evidence for at most four days after sampling, enough for a weekend plus one missed or holiday sampling day. Older analyses leave a coverage gap (INCOMPLETE). Demonstration assumption.'
+max_thickness_factor: 3
+max_thickness_factor_reason: 'Minimum-only specifications publish no upper bound. A reading above three times the minimum is treated as implausible (for example a unit or decimal slip) and needs review (INCOMPLETE). Demonstration assumption.'
+coating_system_processes:
+  ZnNi: [ZNNI_ALK]
+  Zn: [ZN_ALK]
+coating_system_processes_reason: 'A lot passes only if every plating step ran in a process that can produce the ordered coating system. ZnFe and unparsed systems have no process in the demo plant and stay INCOMPLETE.'
+initial_catalog_effective_date: '2026-01-01'
+initial_catalog_effective_date_reason: 'Demonstrate checks of the March-August 2026 simulator against the October web snapshot. Always warn when the observation postdates the order.'
+source: 'https://nmfrc.org/pdf/sf2008/sf0828.pdf'
+source_locator: 'Smie, NASF SUR/FIN 2008, PDF page 2, Table 1; ASTM B117'
+reference_context: 'Supplier test results for ZnNi coatings in the paper (discussion: 6-10 µm). Not an OEM requirement and not a prediction for this lot. A result is attached only to catalog rows whose description names the same passivation colour and the same sealing; no equivalence between blue, transparent and thick-layer passivation is assumed.'
+# match_word must appear in the catalog description; sealed must equal the parsed sealing.
+corrosion_references:
+  - {finish: 'ZnNi + blue passivate', finish_de: 'ZnNi blau passiviert, ohne Versiegelung', match_word: 'blau', sealed: false, white_gt_h: 120, red_gt_h: 720}
+  - {finish: 'ZnNi + blue passivate + sealer', finish_de: 'ZnNi blau passiviert, versiegelt', match_word: 'blau', sealed: true, white_gt_h: 200, red_gt_h: 1008}
+  - {finish: 'ZnNi + black passivate + sealer', finish_de: 'ZnNi schwarz passiviert, versiegelt', match_word: 'schwarz', sealed: true, white_gt_h: 200, red_gt_h: 1008}

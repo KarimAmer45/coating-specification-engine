@@ -1,0 +1,35 @@
+name: Specification engine
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: spec_admin
+          POSTGRES_PASSWORD: ci_ephemeral_only
+          POSTGRES_DB: coating_spec
+        ports: ['5432:5432']
+        options: --health-cmd "pg_isready -U spec_admin -d coating_spec" --health-interval 3s --health-retries 20
+    env:
+      PGHOST: 127.0.0.1
+      PGPORT: 5432
+      PGUSER: spec_admin
+      PGPASSWORD: ci_ephemeral_only
+      PGDATABASE: coating_spec
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install -r requirements.txt
+      - name: Apply Flyway migrations
+        run: docker run --rm --network host -v "$PWD/db/migrations:/flyway/sql:ro" -e FLYWAY_URL=jdbc:postgresql://127.0.0.1:5432/coating_spec -e FLYWAY_USER=spec_admin -e FLYWAY_PASSWORD=ci_ephemeral_only flyway/flyway:11 migrate
+      # CI never contacts the norm publisher: it builds from a small synthetic fixture in the repository.
+      - run: python scripts/build.py --skip-migrate --norm-source tests/fixtures/norm_pages
+      - run: pytest -q tests --junitxml=docs/results/tests.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: specification-results
+          path: docs/

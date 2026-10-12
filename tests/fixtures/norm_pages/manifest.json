@@ -1,0 +1,16 @@
+{
+  "https://example.invalid/norms/din-en-iso-19598/": {
+    "status": "ok",
+    "kind": "norm",
+    "file": "din-en-iso-19598.html",
+    "fetched_at": "2026-10-05T05:00:00+00:00",
+    "sha256": "e0048279bc2e3d605b48fe091a00f2215dd86117fe03b8b30ba59702df26666b"
+  },
+  "https://example.invalid/norms/vw-13750-tl244/": {
+    "status": "ok",
+    "kind": "norm",
+    "file": "vw-13750-tl244.html",
+    "fetched_at": "2026-10-05T05:00:00+00:00",
+    "sha256": "06f0410d2e610035ef7d0d295267977980a8ccd96d0c098eaa2f9bed6cc9c6d7"
+  }
+}

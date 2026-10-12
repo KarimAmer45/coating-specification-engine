@@ -1,0 +1,20 @@
+{
+  "run_at": "2026-10-12T08:54:32+02:00",
+  "command": "python scripts/record_tests.py (pytest -q tests)",
+  "pytest": {
+    "tests": 62,
+    "passed": 62,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 4.51
+  },
+  "python": "3.12.10",
+  "postgresql": "17.11",
+  "reports": {
+    "Pruefbericht_L260430-01721.pdf": {
+      "pages": 1
+    }
+  },
+  "scope": "Automated tests against the locally built database. Docker, Flyway and hosted CI runs are not recorded in this file."
+}
