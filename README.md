@@ -5,11 +5,13 @@
 
 Before a lot ships, someone has to check it against the customer's coating specification. This project turns published coating norm tables into a versioned PostgreSQL catalog, links every lot to the exact table row it was ordered against, checks thickness and bath evidence, and writes a one page German inspection report whose PDF carries the hash of its JSON evidence.
 
+> **Kurzfassung:** Die auf der Partec-Website veröffentlichten Normtabellen werden als versionierter Katalog gespeichert. Jedes simulierte Los wird mit der Tabellenzeile verknüpft, die am Auftragsdatum galt, und gegen Schichtdicke, Badanalysen, Anlagenart und Losstatus geprüft. Ergebnis ist ein einseitiger Prüfbericht als PDF, dessen Fußzeile den Hash des JSON-Datenstands trägt.
+
 <p align="center"><img src="docs/figures/pipeline.png" alt="From published norm page to versioned catalog, lot matching, release checks and the inspection report" width="100%"></p>
 
 <table>
 <tr>
-<td width="58%"><img src="docs/figures/verdicts.png" alt="Technical verdicts for all simulated lots: 4,622 pass, 46 warn, 532 fail, 487 incomplete"></td>
+<td width="58%"><img src="docs/figures/verdicts.png" alt="Technical verdicts for all simulated lots: 4,622 pass, 46 warn, 532 fail (held: 487 sent to rework, 45 blocked, none shipped), 487 incomplete"></td>
 <td width="42%"><img src="docs/reports/Pruefbericht_L260430-01721_preview.png" alt="Top of the generated German inspection report for the complaint lot"><br><sub>Generated Pr&uuml;fbericht (<a href="docs/reports/Pruefbericht_L260430-01721.pdf">full PDF</a>)</sub></td>
 </tr>
 </table>
